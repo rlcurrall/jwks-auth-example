@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer", "AuthServer\AuthServer.csproj", "{E078C636-3C3E-4A6F-A232-1CEC61799319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi", "WeatherApi\WeatherApi.csproj", "{989A3B76-6DFF-4719-A3B8-5BF4A7FA411D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E078C636-3C3E-4A6F-A232-1CEC61799319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E078C636-3C3E-4A6F-A232-1CEC61799319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E078C636-3C3E-4A6F-A232-1CEC61799319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E078C636-3C3E-4A6F-A232-1CEC61799319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989A3B76-6DFF-4719-A3B8-5BF4A7FA411D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989A3B76-6DFF-4719-A3B8-5BF4A7FA411D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989A3B76-6DFF-4719-A3B8-5BF4A7FA411D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989A3B76-6DFF-4719-A3B8-5BF4A7FA411D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

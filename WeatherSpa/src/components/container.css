@@ -1,0 +1,47 @@
+/* Container component styles */
+.ds-container {
+  width: 100%;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ds-container-sm {
+  max-width: 600px;
+}
+
+.ds-container-md {
+  max-width: 800px;
+}
+
+.ds-container-lg {
+  max-width: 1000px;
+}
+
+.ds-container-fluid {
+  max-width: none;
+  padding: 0 1.5rem;
+}
+
+/* Container with vertical padding */
+.ds-container-py-sm {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ds-container-py-md {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.ds-container-py-lg {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Responsive containers */
+@media (min-width: 768px) {
+  .ds-container {
+    padding: 2rem;
+  }
+}

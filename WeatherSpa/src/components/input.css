@@ -1,0 +1,62 @@
+/* Input styles */
+.ds-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  height: 42px;
+}
+
+.ds-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+}
+
+.ds-input-error {
+  border-color: var(--error);
+}
+
+.ds-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.ds-input-success {
+  border-color: var(--success);
+}
+
+.ds-input-success:focus {
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
+}
+
+.ds-input-full {
+  width: 100%;
+}
+
+/* Helper and error text */
+.ds-form-helper {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.ds-form-error {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+/* Disabled state */
+.ds-input:disabled {
+  background-color: var(--surface-hover);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Dark mode adjustments are handled through CSS variables */

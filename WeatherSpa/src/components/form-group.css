@@ -1,0 +1,131 @@
+/* Form Group Component */
+.ds-form-group {
+  position: relative;
+}
+
+/* Variants */
+.ds-form-group-error .ds-form-label {
+  color: var(--error);
+}
+
+.ds-form-group-success .ds-form-label {
+  color: var(--success);
+}
+
+.ds-form-group-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ds-form-group-horizontal .ds-form-label {
+  margin-bottom: 0;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.ds-form-group-horizontal .ds-form-field {
+  flex: 1;
+}
+
+/* Form label styles */
+.ds-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.ds-form-label-required::after {
+  content: '*';
+  color: var(--error);
+  margin-left: 0.25rem;
+}
+
+/* Form field container */
+.ds-form-field {
+  position: relative;
+}
+
+/* Helper and error text */
+.ds-form-helper {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.ds-form-error {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+.ds-form-success {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--success);
+}
+
+/* Icons */
+.ds-form-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+}
+
+.ds-form-icon-left {
+  left: 0.75rem;
+}
+
+.ds-form-icon-right {
+  right: 0.75rem;
+}
+
+.ds-with-icon-left .ds-input {
+  padding-left: 2.5rem;
+}
+
+.ds-with-icon-right .ds-input {
+  padding-right: 2.5rem;
+}
+
+/* Form group spacing */
+.ds-form-group + .ds-form-group {
+  margin-top: 0.5rem;
+}
+
+.ds-form-spacing-sm {
+  margin-bottom: 0.75rem;
+}
+
+.ds-form-spacing-md {
+  margin-bottom: 1.5rem;
+}
+
+.ds-form-spacing-lg {
+  margin-bottom: 2rem;
+}
+
+/* Group with no bottom margin */
+.ds-form-group-no-margin {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ds-form-group-horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ds-form-group-horizontal .ds-form-label {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+}

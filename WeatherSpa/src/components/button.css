@@ -1,0 +1,245 @@
+/* Design System Button Component */
+
+.ds-button {
+  /* Base button styles */
+  border-radius: 6px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  text-decoration: none;
+  height: 42px;
+}
+
+/* Button variants */
+
+/* Primary button */
+.ds-button-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+}
+
+.ds-button-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Secondary button */
+.ds-button-secondary {
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.ds-button-secondary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.2);
+  background-color: rgba(var(--primary-rgb), 0.15);
+}
+
+/* Success button */
+.ds-button-success {
+  background-color: var(--success);
+  color: white;
+  border: none;
+}
+
+.ds-button-success:hover {
+  transform: scale(1.03);
+  background-color: oklch(0.6 0.157 159); /* Slightly darker success */
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Error button */
+.ds-button-error {
+  background-color: var(--error);
+  color: white;
+  border: none;
+}
+
+.ds-button-error:hover {
+  transform: scale(1.03);
+  background-color: oklch(0.6 0.26 27); /* Slightly darker error */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Text button - borderless with underline on hover */
+.ds-button-text {
+  background-color: transparent;
+  color: var(--primary);
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+}
+
+.ds-button-text:hover {
+  background-color: transparent;
+  text-decoration: underline;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Navigation link button for header */
+.ds-button-nav-link {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: none;
+  height: auto;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.ds-button-nav-link:hover {
+  background-color: transparent;
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  transform: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* Button sizes */
+.ds-button-sm {
+  height: 32px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.ds-button-md {
+  height: 42px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+.ds-button-lg {
+  height: 52px;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+}
+
+/* Full width button */
+.ds-button-full {
+  width: 100%;
+}
+
+/* Focus states */
+.ds-button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.3);
+}
+
+.ds-button:focus:not(:focus-visible) {
+  /* Remove focus styles when using mouse (but keep them for keyboard) */
+  outline: none;
+  box-shadow: none;
+}
+
+.ds-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Text button focus styles */
+.ds-button-text:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.ds-button-text:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Nav link focus styles */
+.ds-button-nav-link:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.ds-button-nav-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Disabled state */
+.ds-button:disabled {
+  background-color: var(--text-tertiary);
+  color: white;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  border: none;
+}
+
+/* Text button disabled state */
+.ds-button-text:disabled {
+  background-color: transparent;
+  color: var(--text-tertiary);
+  text-decoration: none;
+}
+
+/* Nav link disabled state */
+.ds-button-nav-link:disabled {
+  background-color: transparent;
+  color: var(--text-tertiary);
+  border-bottom-color: transparent;
+  cursor: not-allowed;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .ds-button-secondary:hover {
+    background-color: rgba(var(--primary-rgb), 0.25);
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  }
+
+  .ds-button-primary:hover {
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.4);
+  }
+
+  .ds-button-text {
+    color: var(--primary-light);
+  }
+
+  .ds-button-text:disabled {
+    color: var(--text-tertiary);
+  }
+
+  .ds-button-nav-link {
+    color: var(--text-secondary);
+  }
+
+  .ds-button-nav-link:hover {
+    color: var(--primary-light);
+    border-bottom-color: var(--primary-light);
+  }
+
+  .ds-button-nav-link:disabled {
+    color: var(--text-tertiary);
+  }
+}

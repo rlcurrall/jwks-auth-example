@@ -1,0 +1,24 @@
+# .NET build output
+bin/
+obj/
+
+# Generated keys
+Keys/
+
+# IDE files
+.vs/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+Thumbs.db

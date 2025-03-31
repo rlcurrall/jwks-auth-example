@@ -1,0 +1,41 @@
+@baseUrl = https://localhost:7002
+@authUrl = http://localhost:5143
+@token = # Paste your token here after obtaining it from the AuthServer
+
+### Get token from AuthServer
+# @name login
+POST {{authUrl}}/api/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "password1",
+  "tenant": "tenant1",
+  "scopes": ["read", "write"]
+}
+
+### Extract token from login response
+@authToken = {{login.response.body.token}}
+
+### Get weather forecast with authentication
+GET {{baseUrl}}/api/weatherforecast
+Authorization: Bearer {{authToken}}
+
+### Get specific weather forecast (requires "read" scope)
+GET {{baseUrl}}/api/weatherforecast/1
+Authorization: Bearer {{authToken}}
+
+### Update weather forecast (requires "write" scope)
+PUT {{baseUrl}}/api/weatherforecast/2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "date": "2025-04-01",
+  "temperatureC": 25,
+  "summary": "Warm and sunny"
+}
+
+### Get user information from the token
+GET {{baseUrl}}/api/weatherforecast/me
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,153 @@
+/* Header styling replaced by Heading component */
+.forecasts-page-header {
+  margin-bottom: 2rem;
+}
+
+.forecasts-user-banner {
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card-like container replaced by Card component */
+.forecasts-container {
+  margin-bottom: 2rem;
+}
+
+.forecasts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.forecasts-table th {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.forecasts-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.forecast-row {
+  transition: background-color 0.2s;
+}
+
+.forecast-row:hover {
+  background-color: var(--surface-hover);
+}
+
+.date-cell {
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.icon-cell {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.weather-icon {
+  display: inline-block;
+}
+
+.temp-cell {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.temp-c {
+  font-weight: 600;
+}
+
+.temp-f {
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+}
+
+.temp-divider {
+  color: var(--text-tertiary);
+  margin: 0 0.25rem;
+}
+
+.inconsistent-summary {
+  position: relative;
+  color: var(--warning);
+}
+
+.warning-indicator {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  vertical-align: super;
+  cursor: help;
+}
+
+/* Permissions info container replaced by Card component */
+.permissions-info {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.permissions-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.permissions-list li {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.permissions-list li.available {
+  background-color: var(--success-bg);
+  border-left: 3px solid var(--success);
+}
+
+.permissions-list li.unavailable {
+  background-color: var(--error-bg);
+  border-left: 3px solid var(--error);
+}
+
+.permission-name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.permission-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .forecasts-table {
+    font-size: 0.9rem;
+  }
+
+  .forecasts-table th,
+  .forecasts-table td {
+    padding: 0.5rem;
+  }
+
+  .icon-cell {
+    font-size: 1.2rem;
+  }
+
+  .temp-f {
+    display: none;
+  }
+
+  .temp-divider {
+    display: none;
+  }
+}

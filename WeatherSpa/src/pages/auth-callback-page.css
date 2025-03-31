@@ -1,0 +1,23 @@
+.auth-callback-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.callback-container {
+  text-align: center;
+  max-width: 500px;
+}
+
+.callback-message {
+  margin-bottom: 1.5rem;
+}
+
+/* Most styles have been moved to design system components:
+- Card: Container styling with background, shadow and padding
+- Button: Back button styling
+- Heading and Text: Typography styles
+- Container: Layout container
+- Flex: Centering and alignment
+*/

@@ -1,0 +1,43 @@
+/* Card component base styles */
+.ds-card {
+  background-color: var(--surface);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+/* Card variants */
+.ds-card-default {
+  border-top: none;
+}
+
+.ds-card-primary {
+  border-top: 3px solid var(--primary);
+}
+
+.ds-card-outline {
+  border: 1px solid var(--border);
+}
+
+/* Hoverable card */
+.ds-card-hoverable:hover {
+  box-shadow: var(--shadow);
+}
+
+/* Card title */
+.ds-card-title {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+/* Card content */
+.ds-card-content {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Dark mode adjustments are handled through CSS variables */

@@ -1,0 +1,56 @@
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.divider span {
+  padding: 0 1rem;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.divider.vertical {
+  flex-direction: column;
+  margin: 0 1rem;
+  height: 100%;
+}
+
+.divider.vertical::before,
+.divider.vertical::after {
+  border-bottom: none;
+  border-left: 1px solid var(--border);
+  height: 50px;
+}
+
+.divider.vertical span {
+  padding: 1rem 0;
+}
+
+/* Theme variants */
+.divider.primary::before,
+.divider.primary::after {
+  border-color: var(--primary);
+}
+
+.divider.primary span {
+  color: var(--primary);
+}
+
+.divider.secondary::before,
+.divider.secondary::after {
+  border-color: var(--secondary);
+}
+
+.divider.secondary span {
+  color: var(--secondary);
+}

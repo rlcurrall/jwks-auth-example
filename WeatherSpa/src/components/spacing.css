@@ -1,0 +1,316 @@
+/* Spacing utilities */
+
+/* Margin utilities */
+.ds-m-0 {
+  margin: 0;
+}
+.ds-mt-0 {
+  margin-top: 0;
+}
+.ds-mr-0 {
+  margin-right: 0;
+}
+.ds-mb-0 {
+  margin-bottom: 0;
+}
+.ds-ml-0 {
+  margin-left: 0;
+}
+.ds-mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+.ds-my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ds-m-xs {
+  margin: 0.25rem;
+}
+.ds-mt-xs {
+  margin-top: 0.25rem;
+}
+.ds-mr-xs {
+  margin-right: 0.25rem;
+}
+.ds-mb-xs {
+  margin-bottom: 0.25rem;
+}
+.ds-ml-xs {
+  margin-left: 0.25rem;
+}
+.ds-mx-xs {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.ds-my-xs {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.ds-m-sm {
+  margin: 0.5rem;
+}
+.ds-mt-sm {
+  margin-top: 0.5rem;
+}
+.ds-mr-sm {
+  margin-right: 0.5rem;
+}
+.ds-mb-sm {
+  margin-bottom: 0.5rem;
+}
+.ds-ml-sm {
+  margin-left: 0.5rem;
+}
+.ds-mx-sm {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.ds-my-sm {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ds-m-md {
+  margin: 1rem;
+}
+.ds-mt-md {
+  margin-top: 1rem;
+}
+.ds-mr-md {
+  margin-right: 1rem;
+}
+.ds-mb-md {
+  margin-bottom: 1rem;
+}
+.ds-ml-md {
+  margin-left: 1rem;
+}
+.ds-mx-md {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.ds-my-md {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ds-m-lg {
+  margin: 2rem;
+}
+.ds-mt-lg {
+  margin-top: 2rem;
+}
+.ds-mr-lg {
+  margin-right: 2rem;
+}
+.ds-mb-lg {
+  margin-bottom: 2rem;
+}
+.ds-ml-lg {
+  margin-left: 2rem;
+}
+.ds-mx-lg {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.ds-my-lg {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ds-m-xl {
+  margin: 3rem;
+}
+.ds-mt-xl {
+  margin-top: 3rem;
+}
+.ds-mr-xl {
+  margin-right: 3rem;
+}
+.ds-mb-xl {
+  margin-bottom: 3rem;
+}
+.ds-ml-xl {
+  margin-left: 3rem;
+}
+.ds-mx-xl {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.ds-my-xl {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Auto margins */
+.ds-m-auto {
+  margin: auto;
+}
+.ds-mt-auto {
+  margin-top: auto;
+}
+.ds-mr-auto {
+  margin-right: auto;
+}
+.ds-mb-auto {
+  margin-bottom: auto;
+}
+.ds-ml-auto {
+  margin-left: auto;
+}
+.ds-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.ds-my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Padding utilities */
+.ds-p-0 {
+  padding: 0;
+}
+.ds-pt-0 {
+  padding-top: 0;
+}
+.ds-pr-0 {
+  padding-right: 0;
+}
+.ds-pb-0 {
+  padding-bottom: 0;
+}
+.ds-pl-0 {
+  padding-left: 0;
+}
+.ds-px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.ds-py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ds-p-xs {
+  padding: 0.25rem;
+}
+.ds-pt-xs {
+  padding-top: 0.25rem;
+}
+.ds-pr-xs {
+  padding-right: 0.25rem;
+}
+.ds-pb-xs {
+  padding-bottom: 0.25rem;
+}
+.ds-pl-xs {
+  padding-left: 0.25rem;
+}
+.ds-px-xs {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.ds-py-xs {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.ds-p-sm {
+  padding: 0.5rem;
+}
+.ds-pt-sm {
+  padding-top: 0.5rem;
+}
+.ds-pr-sm {
+  padding-right: 0.5rem;
+}
+.ds-pb-sm {
+  padding-bottom: 0.5rem;
+}
+.ds-pl-sm {
+  padding-left: 0.5rem;
+}
+.ds-px-sm {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.ds-py-sm {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.ds-p-md {
+  padding: 1rem;
+}
+.ds-pt-md {
+  padding-top: 1rem;
+}
+.ds-pr-md {
+  padding-right: 1rem;
+}
+.ds-pb-md {
+  padding-bottom: 1rem;
+}
+.ds-pl-md {
+  padding-left: 1rem;
+}
+.ds-px-md {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.ds-py-md {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ds-p-lg {
+  padding: 2rem;
+}
+.ds-pt-lg {
+  padding-top: 2rem;
+}
+.ds-pr-lg {
+  padding-right: 2rem;
+}
+.ds-pb-lg {
+  padding-bottom: 2rem;
+}
+.ds-pl-lg {
+  padding-left: 2rem;
+}
+.ds-px-lg {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.ds-py-lg {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.ds-p-xl {
+  padding: 3rem;
+}
+.ds-pt-xl {
+  padding-top: 3rem;
+}
+.ds-pr-xl {
+  padding-right: 3rem;
+}
+.ds-pb-xl {
+  padding-bottom: 3rem;
+}
+.ds-pl-xl {
+  padding-left: 3rem;
+}
+.ds-px-xl {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.ds-py-xl {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}

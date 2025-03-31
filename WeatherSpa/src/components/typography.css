@@ -1,0 +1,190 @@
+/* Typography styles */
+
+/* Heading styles */
+.ds-heading {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 0;
+  font-family: inherit;
+}
+
+/* Heading levels */
+.ds-heading-1 {
+  font-size: 2.25rem; /* 36px */
+  margin-bottom: 1.5rem;
+}
+
+.ds-heading-2 {
+  font-size: 1.875rem; /* 30px */
+  margin-bottom: 1.25rem;
+}
+
+.ds-heading-3 {
+  font-size: 1.5rem; /* 24px */
+  margin-bottom: 1rem;
+}
+
+.ds-heading-4 {
+  font-size: 1.25rem; /* 20px */
+  margin-bottom: 0.75rem;
+}
+
+.ds-heading-5 {
+  font-size: 1.125rem; /* 18px */
+  margin-bottom: 0.5rem;
+}
+
+.ds-heading-6 {
+  font-size: 1rem; /* 16px */
+  margin-bottom: 0.5rem;
+}
+
+/* Text alignment variants */
+.ds-text-center {
+  text-align: center;
+}
+
+.ds-text-left {
+  text-align: left;
+}
+
+.ds-text-right {
+  text-align: right;
+}
+
+/* Color variants */
+.ds-text-primary {
+  color: var(--text-primary);
+}
+
+.ds-text-secondary {
+  color: var(--text-secondary);
+}
+
+.ds-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.ds-text-brand {
+  color: var(--primary);
+}
+
+.ds-text-success {
+  color: var(--success);
+}
+
+.ds-text-error {
+  color: var(--error);
+}
+
+.ds-text-warning {
+  color: var(--warning);
+}
+
+.ds-text-info {
+  color: var(--info);
+}
+
+/* Text styles */
+.ds-text {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Text size variants */
+.ds-text-xs {
+  font-size: 0.75rem; /* 12px */
+}
+
+.ds-text-sm {
+  font-size: 0.875rem; /* 14px */
+}
+
+.ds-text-md {
+  font-size: 1rem; /* 16px */
+}
+
+.ds-text-lg {
+  font-size: 1.125rem; /* 18px */
+}
+
+.ds-text-xl {
+  font-size: 1.25rem; /* 20px */
+}
+
+.ds-text-2xl {
+  font-size: 1.5rem; /* 24px */
+}
+
+/* Font weight variants */
+.ds-font-normal {
+  font-weight: 400;
+}
+
+.ds-font-medium {
+  font-weight: 500;
+}
+
+.ds-font-semibold {
+  font-weight: 600;
+}
+
+.ds-font-bold {
+  font-weight: 700;
+}
+
+/* Line height variants */
+.ds-leading-none {
+  line-height: 1;
+}
+
+.ds-leading-tight {
+  line-height: 1.2;
+}
+
+.ds-leading-normal {
+  line-height: 1.5;
+}
+
+.ds-leading-relaxed {
+  line-height: 1.75;
+}
+
+/* Text decoration */
+.ds-underline {
+  text-decoration: underline;
+}
+
+.ds-no-underline {
+  text-decoration: none;
+}
+
+/* Text transform */
+.ds-uppercase {
+  text-transform: uppercase;
+}
+
+.ds-lowercase {
+  text-transform: lowercase;
+}
+
+.ds-capitalize {
+  text-transform: capitalize;
+}
+
+.ds-normal-case {
+  text-transform: none;
+}
+
+/* Responsive text sizes */
+@media (min-width: 768px) {
+  .ds-heading-1 {
+    font-size: 3rem; /* 48px on larger screens */
+  }
+
+  .ds-heading-2 {
+    font-size: 2.25rem; /* 36px on larger screens */
+  }
+}

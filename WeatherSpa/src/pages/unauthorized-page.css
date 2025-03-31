@@ -1,0 +1,76 @@
+.unauthorized-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+.unauthorized-container {
+  background-color: var(--surface);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: var(--error);
+}
+
+.unauthorized-container h1 {
+  color: var(--error);
+  margin-bottom: 1rem;
+}
+
+.unauthorized-container p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.user-permissions-section h2 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.user-banner-container {
+  margin: 1rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.unauthorized-user-banner {
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+/* For older styling, now replaced with UserInfoBanner */
+.no-scopes {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.help-text {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  margin-top: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.action-button-spacing {
+  margin-right: 1rem;
+}
+
+.unauthorized-message {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}

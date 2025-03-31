@@ -1,0 +1,60 @@
+/* These styles have been replaced by Card, Heading, and Text components from the design system */
+.welcome-message,
+.hero-cta {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* These button arrangements can be replaced by Flex component */
+.action-buttons,
+.auth-buttons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+/* Auth options section - can be replaced by Card component */
+.auth-options {
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  height: 100%;
+}
+
+/* Spacing style for auth buttons - can be replaced by spacing utilities */
+.auth-button-spacing {
+  margin-right: 1rem;
+}
+
+/* Demo accounts grid - can be replaced by Grid component */
+.demo-accounts {
+  width: 100%;
+}
+
+/* Code styling */
+code {
+  background-color: var(--background);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-light);
+}
+
+/* Features section */
+.features {
+  margin: 3rem auto;
+  max-width: 800px;
+}
+
+/* Features title - can be replaced by Heading component */
+.features-title {
+  margin-bottom: 2rem;
+}
+
+/* Features grid - can be replaced by Grid component */
+.features-grid {
+  /* Grid layout handled by design system Grid component */
+}

@@ -1,0 +1,46 @@
+### Login as user
+POST http://localhost:5144/api/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "password1",
+  "tenant": "tenant1",
+  "scopes": ["read", "write"]
+}
+
+### Login as admin
+POST http://localhost:5144/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "adminpass",
+  "tenant": "tenant1",
+  "scopes": ["read", "write", "admin"]
+}
+
+### Refresh token
+POST http://localhost:5144/api/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Logout (revoke refresh token)
+POST http://localhost:5144/api/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Test the me endpoint with token
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+GET http://localhost:5144/api/me
+Authorization: Bearer {{token}}
+
+### Get JWKS endpoint
+GET http://localhost:5144/.well-known/jwks.json

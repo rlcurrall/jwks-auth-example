@@ -1,0 +1,171 @@
+/* Hero component */
+.ds-hero {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding: 4rem 1.5rem 5rem;
+  overflow: hidden;
+  background-color: var(--background);
+  /* Better handling of full-width hero that works with scrollbars */
+  box-sizing: border-box;
+}
+
+.ds-hero-title {
+  font-size: 3.2rem;
+  margin-bottom: 0.7rem;
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.ds-hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.ds-hero-subtitle {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  margin-top: 1.8rem;
+  margin-bottom: 3.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Rain background effect */
+.ds-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* Primary thin rain lines */
+    linear-gradient(
+      113deg,
+      transparent 0%,
+      transparent 49.5%,
+      rgba(var(--primary-rgb), 0.2) 49.5%,
+      rgba(var(--primary-rgb), 0.2) 50.5%,
+      transparent 50.5%,
+      transparent 100%
+    ),
+    /* Secondary thin lines at slightly different angle */
+      linear-gradient(
+        117deg,
+        transparent 0%,
+        transparent 49.7%,
+        rgba(var(--primary-rgb), 0.13) 49.7%,
+        rgba(var(--primary-rgb), 0.13) 50.3%,
+        transparent 50.3%,
+        transparent 100%
+      ),
+    /* Thicker lines */
+      linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 49.6%,
+        rgba(var(--primary-rgb), 0.09) 49.6%,
+        rgba(var(--primary-rgb), 0.09) 50.4%,
+        transparent 50.4%,
+        transparent 100%
+      ),
+    /* Extra thick occasional lines */
+      linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 49.8%,
+        rgba(var(--primary-rgb), 0.06) 49.8%,
+        rgba(var(--primary-rgb), 0.06) 50.2%,
+        transparent 50.2%,
+        transparent 100%
+      );
+  background-size:
+    28px 28px,
+    33px 33px,
+    65px 65px,
+    120px 120px;
+  opacity: 0;
+  z-index: 1;
+  animation:
+    fadeInGrid 1.2s ease-out forwards,
+    rainAnimation 20s linear infinite;
+  /* Make the grid fade out as we move down while keeping visibility on the left */
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.ds-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animation keyframes */
+@keyframes fadeInGrid {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rainAnimation {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      -28px 28px,
+      -33px 33px,
+      -65px 65px,
+      -120px 120px;
+  }
+}
+
+/* Optional hero size variants */
+.ds-hero-sm {
+  padding: 3rem 1.5rem 4rem;
+}
+
+.ds-hero-lg {
+  padding: 5rem 1.5rem 6rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .ds-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .ds-hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+}

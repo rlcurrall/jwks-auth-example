@@ -1,0 +1,91 @@
+/* User Info Banner styles */
+.ds-user-info-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--gray-100);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.ds-user-info-details {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ds-user-info-username {
+  font-weight: 500;
+}
+
+.ds-user-info-tenant {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+}
+
+.ds-user-info-divider {
+  color: var(--text-tertiary);
+  margin: 0 0.25rem;
+}
+
+.ds-user-info-scopes {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ds-scope-badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ds-scope-badge.active {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+
+.ds-scope-badge.inactive {
+  background-color: var(--gray-200);
+  color: var(--text-tertiary);
+}
+
+.ds-scope-badge-icon {
+  margin-right: 0.25rem;
+  font-size: 0.7rem;
+}
+
+/* Compact variant */
+.ds-user-info-banner.compact {
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* Variants */
+.ds-user-info-banner.primary {
+  background-color: var(--primary-light);
+  border-bottom: 1px solid var(--primary);
+}
+
+.ds-user-info-banner.primary .ds-user-info-details {
+  color: var(--text-primary);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .ds-user-info-banner {
+    background-color: var(--gray-800);
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  .ds-user-info-banner.primary {
+    background-color: rgba(var(--primary-rgb), 0.2);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.3);
+  }
+}

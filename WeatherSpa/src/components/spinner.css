@@ -1,0 +1,76 @@
+/* Spinner component */
+.ds-spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
+.ds-spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid var(--primary);
+  width: 30px;
+  height: 30px;
+  animation: ds-spin 1s linear infinite;
+}
+
+/* Size variants */
+.ds-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.ds-spinner-md {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+}
+
+.ds-spinner-lg {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+/* Spinner text */
+.ds-spinner-text {
+  margin-top: 1rem;
+  color: inherit;
+  font-size: 1rem;
+}
+
+/* When spinner fills the container */
+.ds-spinner-fullscreen {
+  height: 100vh;
+}
+
+.ds-spinner-fullheight {
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Allow more space for the container */
+.ds-spinner-with-text {
+  margin-bottom: 1rem;
+}
+
+/* Animation keyframes */
+@keyframes ds-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .ds-spinner {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-top-color: var(--primary);
+  }
+}

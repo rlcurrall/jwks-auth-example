@@ -1,0 +1,61 @@
+/* Accessibility utilities */
+
+/* Visually hide content while keeping it accessible to screen readers */
+.ds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus outline for keyboard navigation */
+.ds-focus-outline {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Skip link for keyboard users to bypass navigation */
+.ds-skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.ds-skip-link:focus {
+  top: 0;
+}
+
+/* For elements that should be hidden from all users */
+.ds-hidden {
+  display: none !important;
+}
+
+/* For elements that should be hidden from screen readers (decorative elements) */
+.ds-aria-hidden {
+  aria-hidden: true;
+}
+
+/* Utility for screen reader announcements */
+.ds-sr-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  aria-live: assertive;
+}

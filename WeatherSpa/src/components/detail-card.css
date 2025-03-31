@@ -1,0 +1,25 @@
+.detail-card {
+  border-top: 3px solid var(--primary);
+  background-color: var(--surface);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+  height: 100%;
+}
+
+.detail-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.detail-card-title {
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.detail-card-content {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
