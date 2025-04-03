@@ -9,6 +9,7 @@ namespace AuthServer.Pages.Auth;
 public class LoginModel(
     IAuthenticationService authService,
     IRedirectUriValidator redirectUriValidator,
+    IAuthCodeRepository authCodeRepository,
     ILogger<LoginModel> logger
 ) : PageModel
 {
@@ -45,6 +46,9 @@ public class LoginModel(
         var state = HttpContext.Session.GetString("State");
         var redirectUri = HttpContext.Session.GetString("RedirectUri");
         var scopesValue = HttpContext.Session.GetString("Scopes");
+        _ = HttpContext.Session.GetString("ClientId") ?? "default-client";
+        var codeChallenge = HttpContext.Session.GetString("CodeChallenge");
+        var codeChallengeMethod = HttpContext.Session.GetString("CodeChallengeMethod");
 
         if (string.IsNullOrEmpty(redirectUri))
         {
@@ -70,20 +74,25 @@ public class LoginModel(
             return Page();
         }
 
-        var uriBuilder = new UriBuilder(redirectUri);
-        var query = HttpUtility.ParseQueryString(uriBuilder.Query);
-
         // Parse scopes from session, default to user_info if not provided
         var scopesList = string.IsNullOrEmpty(scopesValue)
             ? ["user_info"]
             : scopesValue.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
 
-        // Generate both access token and refresh token with the requested scopes
-        var (accessToken, refreshToken) = authService.GenerateTokenWithRefresh(user, scopesList);
+        // Generate an authorization code
+        var authCode = authCodeRepository.Create(
+            user.Id,
+            redirectUri,
+            scopesList,
+            codeChallenge,
+            codeChallengeMethod
+        );
 
-        // Add both tokens to the redirect URL
-        query["token"] = accessToken;
-        query["refreshToken"] = refreshToken.Token;
+        var uriBuilder = new UriBuilder(redirectUri);
+        var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+        // Add the authorization code to the redirect URL
+        query["code"] = authCode;
 
         if (!string.IsNullOrEmpty(state))
         {
@@ -92,10 +101,20 @@ public class LoginModel(
 
         uriBuilder.Query = query.ToString();
 
+        // Clear session data
         HttpContext.Session.Remove("RedirectUri");
         HttpContext.Session.Remove("State");
         HttpContext.Session.Remove("Tenant");
         HttpContext.Session.Remove("Scopes");
+        HttpContext.Session.Remove("ClientId");
+        HttpContext.Session.Remove("CodeChallenge");
+        HttpContext.Session.Remove("CodeChallengeMethod");
+
+        logger.LogInformation(
+            "User {Username} authenticated successfully. Redirecting to {RedirectUri} with authorization code",
+            user.Username,
+            redirectUri
+        );
 
         return Redirect(uriBuilder.ToString());
     }

@@ -1,4 +1,4 @@
-namespace AuthServer.Services;
+namespace AuthServer.Services.Infrastructure;
 
 public static class Log
 {
@@ -58,6 +58,41 @@ public static class Log
             "Redirect login failed for user {Username} in tenant {Tenant}: Invalid credentials"
         );
 
+    private static readonly Action<ILogger, string, string, Exception?> _authCodeCreated =
+        LoggerMessage.Define<string, string>(
+            LogLevel.Information,
+            new EventId(9, nameof(AuthCodeCreated)),
+            "Authorization code created for user ID {UserId} with redirect URI {RedirectUri}"
+        );
+
+    private static readonly Action<ILogger, string, string, Exception?> _authCodeConsumed =
+        LoggerMessage.Define<string, string>(
+            LogLevel.Information,
+            new EventId(10, nameof(AuthCodeConsumed)),
+            "Authorization code consumed for user ID {UserId} with redirect URI {RedirectUri}"
+        );
+
+    private static readonly Action<ILogger, string, Exception?> _authCodeInvalid =
+        LoggerMessage.Define<string>(
+            LogLevel.Warning,
+            new EventId(11, nameof(AuthCodeInvalid)),
+            "Invalid authorization code: {Code}"
+        );
+
+    private static readonly Action<ILogger, string, string, Exception?> _authCodeExpired =
+        LoggerMessage.Define<string, string>(
+            LogLevel.Warning,
+            new EventId(12, nameof(AuthCodeExpired)),
+            "Expired authorization code for user ID {UserId} with redirect URI {RedirectUri}"
+        );
+
+    private static readonly Action<ILogger, string, string, Exception?> _authCodeRedirectMismatch =
+        LoggerMessage.Define<string, string>(
+            LogLevel.Warning,
+            new EventId(13, nameof(AuthCodeRedirectMismatch)),
+            "Redirect URI mismatch for authorization code. Expected: {ExpectedUri}, Got: {ActualUri}"
+        );
+
     public static void LoginAttempt(ILogger logger, string username, string tenant)
     {
         _loginAttempt(logger, username, tenant, null);
@@ -101,5 +136,34 @@ public static class Log
     public static void TokenRefreshed(ILogger logger, string username)
     {
         _tokenRefreshed(logger, username, null);
+    }
+
+    public static void AuthCodeCreated(ILogger logger, string userId, string redirectUri)
+    {
+        _authCodeCreated(logger, userId, redirectUri, null);
+    }
+
+    public static void AuthCodeConsumed(ILogger logger, string userId, string redirectUri)
+    {
+        _authCodeConsumed(logger, userId, redirectUri, null);
+    }
+
+    public static void AuthCodeInvalid(ILogger logger, string code)
+    {
+        _authCodeInvalid(logger, code, null);
+    }
+
+    public static void AuthCodeExpired(ILogger logger, string userId, string redirectUri)
+    {
+        _authCodeExpired(logger, userId, redirectUri, null);
+    }
+
+    public static void AuthCodeRedirectMismatch(
+        ILogger logger,
+        string expectedUri,
+        string actualUri
+    )
+    {
+        _authCodeRedirectMismatch(logger, expectedUri, actualUri, null);
     }
 }

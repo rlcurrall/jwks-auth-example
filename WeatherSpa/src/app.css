@@ -1,35 +1,50 @@
 :root {
   /* Primary brand color - OKLCH */
-  --primary: oklch(0.623 0.214 259.815); /* Blue */
+  --primary: oklch(0.623 0.214 259.815);
+  /* Blue */
   --primary-light: oklch(0.67 0.214 259.815);
-  --primary-rgb: 61, 109, 245; /* RGB for use in rgba() */
+  --primary-rgb: 61, 109, 245;
+  /* RGB for use in rgba() */
 
   /* Neutral palette - OKLCH */
-  --gray-50: oklch(0.98 0.005 255); /* #f9fafb */
-  --gray-100: oklch(0.96 0.005 255); /* #f3f4f6 */
-  --gray-200: oklch(0.92 0.005 255); /* #e5e7eb */
-  --gray-400: oklch(0.75 0.005 255); /* #9ca3af */
-  --gray-600: oklch(0.55 0.005 255); /* #4b5563 */
-  --gray-700: oklch(0.45 0.005 255); /* #374151 */
-  --gray-800: oklch(0.35 0.005 255); /* #1f2937 */
-  --gray-900: oklch(0.25 0.005 255); /* #111827 */
+  --gray-50: oklch(0.98 0.005 255);
+  /* #f9fafb */
+  --gray-100: oklch(0.96 0.005 255);
+  /* #f3f4f6 */
+  --gray-200: oklch(0.92 0.005 255);
+  /* #e5e7eb */
+  --gray-400: oklch(0.75 0.005 255);
+  /* #9ca3af */
+  --gray-600: oklch(0.55 0.005 255);
+  /* #4b5563 */
+  --gray-700: oklch(0.45 0.005 255);
+  /* #374151 */
+  --gray-800: oklch(0.35 0.005 255);
+  /* #1f2937 */
+  --gray-900: oklch(0.25 0.005 255);
+  /* #111827 */
 
   /* Semantic colors - OKLCH */
-  --success: oklch(0.655 0.157 159); /* #10b981 */
-  --success-light: oklch(0.9 0.07 159); /* #d1fae5 */
-  --error: oklch(0.65 0.26 27); /* #ef4444 */
-  --error-light: oklch(0.9 0.07 27); /* #fee2e2 */
-  --warning: oklch(0.7 0.18 75); /* #f59e0b */
-  --warning-light: oklch(0.95 0.05 75); /* #fef3c7 */
-  --info: oklch(0.65 0.18 230); /* #0284c7 */
-  --info-light: oklch(0.95 0.03 230); /* #e0f2fe */
+  --success: oklch(0.655 0.157 159);
+  /* #10b981 */
+  --success-light: oklch(0.9 0.07 159);
+  /* #d1fae5 */
+  --error: oklch(0.65 0.26 27);
+  /* #ef4444 */
+  --error-light: oklch(0.9 0.07 27);
+  /* #fee2e2 */
+  --warning: oklch(0.7 0.18 75);
+  /* #f59e0b */
+  --warning-light: oklch(0.95 0.05 75);
+  /* #fef3c7 */
+  --info: oklch(0.65 0.18 230);
+  /* #0284c7 */
+  --info-light: oklch(0.95 0.03 230);
+  /* #e0f2fe */
 
   /* Functional assignments */
   --background: var(--gray-50);
-  --background-rgb: 249, 250, 251; /* For rgba usage */
-  --surface: oklch(1 0 0); /* Pure white */
-  --surface-rgb: 255, 255, 255; /* For rgba usage */
-  --surface-hover: var(--gray-100);
+  --background-rgb: 249, 250, 251;
 
   --text-primary: var(--gray-800);
   --text-secondary: var(--gray-600);
@@ -130,15 +145,13 @@ p {
   :root {
     /* Keep primary the same for consistency across modes */
     --primary: oklch(0.623 0.214 259.815);
-    --primary-light: oklch(0.7 0.214 259.815); /* Brighter for dark mode */
+    --primary-light: oklch(0.7 0.214 259.815);
+    /* Brighter for dark mode */
     --primary-rgb: 61, 109, 245;
 
     /* Functional reassignments for dark mode */
     --background: var(--gray-900);
     --background-rgb: 17, 24, 39;
-    --surface: var(--gray-800);
-    --surface-rgb: 31, 41, 55;
-    --surface-hover: var(--gray-700);
 
     --text-primary: var(--gray-50);
     --text-secondary: var(--gray-200);
@@ -148,10 +161,14 @@ p {
     --border-light: var(--gray-800);
 
     /* Semi-transparent backgrounds for dark mode */
-    --success-bg: oklch(0.655 0.157 159 / 0.2); /* Success with opacity */
-    --error-bg: oklch(0.65 0.26 27 / 0.2); /* Error with opacity */
-    --warning-bg: oklch(0.7 0.18 75 / 0.2); /* Warning with opacity */
-    --info-bg: oklch(0.65 0.18 230 / 0.2); /* Info with opacity */
+    --success-bg: oklch(0.655 0.157 159 / 0.2);
+    /* Success with opacity */
+    --error-bg: oklch(0.65 0.26 27 / 0.2);
+    /* Error with opacity */
+    --warning-bg: oklch(0.7 0.18 75 / 0.2);
+    /* Warning with opacity */
+    --info-bg: oklch(0.65 0.18 230 / 0.2);
+    /* Info with opacity */
 
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);

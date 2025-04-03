@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using AuthServer.Contracts;
 
-namespace AuthServer.Services;
+namespace AuthServer.Services.Client;
 
 /// <summary>
 /// Service for validating redirect URIs to prevent open redirect vulnerabilities

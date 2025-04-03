@@ -34,7 +34,7 @@ public interface IRefreshTokenService
     /// </summary>
     /// <param name="token">The token to revoke</param>
     /// <returns>True if revoked successfully</returns>
-    public Task<bool> RevokeRefreshToken(string token);
+    public Task<bool> Revoke(string token);
 
     /// <summary>
     /// Revoke all refresh tokens for a specific user

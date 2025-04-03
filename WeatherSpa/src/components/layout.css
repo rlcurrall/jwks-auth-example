@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: var(--surface);
+  background-color: var(--color-surface);
   box-shadow: var(--shadow-sm);
   width: 100%;
   position: relative;
@@ -205,27 +205,33 @@
 }
 
 .ds-max-w-xs {
-  max-width: 20rem; /* 320px */
+  max-width: 20rem;
+  /* 320px */
 }
 
 .ds-max-w-sm {
-  max-width: 30rem; /* 480px */
+  max-width: 30rem;
+  /* 480px */
 }
 
 .ds-max-w-md {
-  max-width: 40rem; /* 640px */
+  max-width: 40rem;
+  /* 640px */
 }
 
 .ds-max-w-lg {
-  max-width: 50rem; /* 800px */
+  max-width: 50rem;
+  /* 800px */
 }
 
 .ds-max-w-xl {
-  max-width: 60rem; /* 960px */
+  max-width: 60rem;
+  /* 960px */
 }
 
 .ds-max-w-2xl {
-  max-width: 70rem; /* 1120px */
+  max-width: 70rem;
+  /* 1120px */
 }
 
 /* Height utilities */

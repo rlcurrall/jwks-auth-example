@@ -2,6 +2,10 @@
 @model AuthServer.Pages.Auth.LoginModel
 @{
     ViewData["Title"] = "Login";
+
+    var clientId = HttpContext.Session.GetString("ClientId") ?? "default-client";
+    var scopes = HttpContext.Session.GetString("Scopes");
+    var isOAuthRequest = !string.IsNullOrEmpty(HttpContext.Session.GetString("RedirectUri"));
 }
 
 <!DOCTYPE html>
@@ -23,6 +27,8 @@
             --button-text-color: white;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --error-color: #f44336;
+            --info-bg-color: #e3f2fd;
+            --info-text-color: #0d47a1;
         }
 
         @@media (prefers-color-scheme: dark) {
@@ -37,6 +43,8 @@
                 --button-text-color: #ffffff;
                 --shadow-color: rgba(0, 0, 0, 0.3);
                 --error-color: #f44336;
+                --info-bg-color: #1a237e;
+                --info-text-color: #bbdefb;
             }
         }
 
@@ -104,7 +112,6 @@
             border-radius: 4px;
             font-size: 1rem;
             cursor: pointer;
-            margin-top: 1rem;
             transition: background-color 0.3s ease;
         }
 
@@ -112,24 +119,42 @@
             background-color: var(--button-hover-bg-color);
         }
 
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-
-        .hidden {
-            display: none;
-        }
-
         .error-message {
             color: var(--error-color);
-            margin-top: 10px;
+            margin-bottom: 1rem;
             text-align: center;
+        }
+
+        .oauth-info {
+            background-color: var(--info-bg-color);
+            color: var(--info-text-color);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
 
-        .text-danger {
-            color: var(--error-color);
+        .oauth-info h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .oauth-info p {
+            margin: 0.5rem 0;
+        }
+
+        .scope-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .scope-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -143,37 +168,55 @@
 
     <div class="login-container">
         <h1>Login</h1>
+
+        @if (isOAuthRequest)
+        {
+            <div class="oauth-info">
+                <h3>Authorization Request</h3>
+                <p><strong>Application:</strong> @clientId</p>
+
+                @if (!string.IsNullOrEmpty(scopes))
+                {
+                    <p><strong>Requested Permissions:</strong></p>
+                    <div class="scope-list">
+                        @foreach (var scope in scopes.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            <span class="scope-item">@scope</span>
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.ValidationError))
+        {
+            <div class="error-message">@Model.ValidationError</div>
+        }
+
         <form method="post">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="Username" required>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="Password" required>
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label for="Username">Username</label>
+                <input type="text" id="Username" name="Username" value="@Model.Username" required>
             </div>
 
-            @if (string.IsNullOrEmpty(Model.Tenant))
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" name="Password" required>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Tenant))
             {
-                <div class="form-group" id="tenant-group">
-                    <label for="tenant">Tenant</label>
-                    <input type="text" id="tenant" name="Tenant" required value="tenant1">
-                    <span asp-validation-for="Tenant" class="text-danger"></span>
-                </div>
+                <input type="hidden" name="Tenant" value="@Model.Tenant">
             }
             else
             {
-                <input type="hidden" id="tenant" name="Tenant" value="@Model.Tenant">
+                <div class="form-group">
+                    <label for="Tenant">Tenant</label>
+                    <input type="text" id="Tenant" name="Tenant" value="@Model.Tenant" required>
+                </div>
             }
 
             @Html.AntiForgeryToken()
-
-            @if (!string.IsNullOrEmpty(Model.ValidationError))
-            {
-                <div class="error-message">@Model.ValidationError</div>
-            }
 
             <button type="submit">Login</button>
         </form>

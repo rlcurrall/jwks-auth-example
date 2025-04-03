@@ -1,7 +1,7 @@
 using AuthServer.Contracts;
 using AuthServer.Models;
 
-namespace AuthServer.Services;
+namespace AuthServer.Services.Token;
 
 /// <summary>
 /// Background service that periodically cleans up expired refresh tokens

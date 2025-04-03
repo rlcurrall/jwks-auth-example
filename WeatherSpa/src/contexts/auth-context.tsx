@@ -1,15 +1,18 @@
 import { jwtDecode } from 'jwt-decode';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthState, Claims, User } from '../types';
+import { refreshAccessToken } from '../services/auth-service';
+import { Claims, User } from '../types';
 
-interface AuthContextType extends AuthState {
-  login: (token: string, refreshToken: string) => void;
+interface AuthContextType {
+  isAuthenticated: boolean;
+  user: User | null;
+  login: (token: string, refreshToken?: string, rememberMe?: boolean) => void;
   logout: () => void;
   getToken: () => string | null;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | null>(null);
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -17,85 +20,27 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const navigate = useNavigate();
-  const [authState, setAuthState] = useState<AuthState>({
-    isAuthenticated: false,
-    user: null,
-    token: null,
-    loading: true,
-    error: null,
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isInitialLogin, setIsInitialLogin] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Check for token in sessionStorage on app load
-    const token = sessionStorage.getItem('auth_token');
-    const refreshToken = sessionStorage.getItem('refresh_token');
-
-    if (token && refreshToken) {
-      try {
-        // Decode user info from token
-        const decoded = jwtDecode<Claims>(token);
-
-        const expiryDate = new Date(decoded.exp * 1000);
-
-        // If token is expired, clear auth state
-        if (expiryDate < new Date()) {
-          console.log('Token expired, clearing auth state');
-          clearAuthData();
-          setAuthState({
-            isAuthenticated: false,
-            user: null,
-            token: null,
-            loading: false,
-            error: 'Token expired. Please login again.',
-          });
-          return;
-        }
-
-        const user: User = {
-          userId: decoded.sub,
-          username: decoded.name || decoded.sub,
-          tenant: decoded.tenant || '',
-          roles: decoded.roles || [],
-          scopes: decoded.scope || [],
-        };
-
-        setAuthState({
-          isAuthenticated: true,
-          user,
-          token,
-          loading: false,
-          error: null,
-        });
-      } catch (error) {
-        console.error('Error decoding token:', error);
-        clearAuthData();
-        setAuthState({
-          isAuthenticated: false,
-          user: null,
-          token: null,
-          loading: false,
-          error: 'Invalid authentication token',
+    // Only check for refresh token if we haven't just logged in
+    if (!isInitialLogin) {
+      // Check both storage locations for refresh token
+      const refreshToken = localStorage.getItem('refresh_token') || sessionStorage.getItem('refresh_token');
+      if (refreshToken) {
+        refreshAccessToken().then(authData => {
+          if (authData) {
+            login(authData.access_token, authData.refresh_token);
+          }
         });
       }
-    } else {
-      setAuthState(prev => ({ ...prev, loading: false }));
     }
-  }, []);
+  }, [isInitialLogin]);
 
-  function clearAuthData() {
-    console.log('Clearing auth data');
-    sessionStorage.removeItem('auth_token');
-    sessionStorage.removeItem('refresh_token');
-    sessionStorage.removeItem('auth_state');
-  }
-
-  function login(token: string, refreshToken: string) {
-    console.log('Auth context login called with token and refresh token');
+  const login = (token: string, refreshToken?: string, rememberMe: boolean = false) => {
     try {
-      // Store tokens in sessionStorage
-      sessionStorage.setItem('auth_token', token);
-      sessionStorage.setItem('refresh_token', refreshToken);
-
       // Decode user info from token
       const decoded = jwtDecode<Claims>(token);
       const user: User = {
@@ -103,55 +48,43 @@ export function AuthProvider({ children }: AuthProviderProps) {
         username: decoded.name || decoded.sub,
         tenant: decoded.tenant || '',
         roles: decoded.roles || [],
-        scopes: decoded.scope || [],
+        scopes: (decoded.scope || []) as string[],
       };
 
-      setAuthState({
-        isAuthenticated: true,
-        user,
-        token,
-        loading: false,
-        error: null,
-      });
-
+      sessionStorage.setItem('access_token', token);
+      if (refreshToken) {
+        if (rememberMe) {
+          localStorage.setItem('refresh_token', refreshToken);
+        } else {
+          sessionStorage.setItem('refresh_token', refreshToken);
+        }
+      }
+      setIsAuthenticated(true);
+      setIsInitialLogin(true);
+      setUser(user);
       navigate('/forecasts');
     } catch (error) {
-      console.error('Login error:', error);
-      setAuthState({
-        isAuthenticated: false,
-        user: null,
-        token: null,
-        loading: false,
-        error: 'Failed to authenticate',
-      });
+      console.error('Error decoding token:', error);
+      logout();
     }
-  }
+  };
 
-  function logout() {
-    clearAuthData();
-    setAuthState({
-      isAuthenticated: false,
-      user: null,
-      token: null,
-      loading: false,
-      error: null,
-    });
+  const logout = () => {
+    sessionStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    sessionStorage.removeItem('refresh_token');
+    setIsAuthenticated(false);
+    setIsInitialLogin(false);
+    setUser(null);
     navigate('/');
-  }
+  };
 
-  function getToken() {
-    return authState.token;
-  }
+  const getToken = () => {
+    return sessionStorage.getItem('access_token');
+  };
 
   return (
-    <AuthContext.Provider
-      value={{
-        ...authState,
-        login,
-        logout,
-        getToken,
-      }}
-    >
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, getToken }}>
       {children}
     </AuthContext.Provider>
   );
@@ -160,7 +93,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 // eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;

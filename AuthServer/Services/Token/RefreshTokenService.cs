@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using AuthServer.Contracts;
 using AuthServer.Models;
 
-namespace AuthServer.Services;
+namespace AuthServer.Services.Token;
 
 public class RefreshTokenService(TokenConfiguration tokenConfiguration) : IRefreshTokenService
 {
@@ -65,7 +65,7 @@ public class RefreshTokenService(TokenConfiguration tokenConfiguration) : IRefre
         return newRefreshToken;
     }
 
-    public async Task<bool> RevokeRefreshToken(string token)
+    public async Task<bool> Revoke(string token)
     {
         var existingToken = await GetByToken(token);
 

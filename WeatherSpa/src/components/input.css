@@ -1,15 +1,13 @@
 /* Input styles */
 .ds-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.95rem;
-  background-color: var(--surface);
-  color: var(--text-primary);
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
   height: 42px;
 }
 
@@ -54,9 +52,13 @@
 
 /* Disabled state */
 .ds-input:disabled {
-  background-color: var(--surface-hover);
+  background-color: var(--color-surface-hover);
   color: var(--text-tertiary);
   cursor: not-allowed;
 }
 
 /* Dark mode adjustments are handled through CSS variables */
+
+.ds-input:hover {
+  background-color: rgba(var(--primary-rgb), 0.05);
+}

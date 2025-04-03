@@ -66,8 +66,8 @@ builder
 // Add authorization
 builder
     .Services.AddAuthorizationBuilder()
-    .AddPolicy("ReadAccess", policy => policy.RequireClaim("scope", "read"))
-    .AddPolicy("WriteAccess", policy => policy.RequireClaim("scope", "write"));
+    .AddPolicy("ReadAccess", policy => policy.RequireClaim("scope", "weather.read"))
+    .AddPolicy("WriteAccess", policy => policy.RequireClaim("scope", "weather.write"));
 
 // Configure Swagger with JWT support
 builder.Services.AddEndpointsApiExplorer();

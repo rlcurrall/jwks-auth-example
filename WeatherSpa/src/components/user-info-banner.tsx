@@ -44,7 +44,7 @@ export const UserInfoBanner = forwardRef<HTMLDivElement, UserInfoBannerProps>(
       user,
       variant = 'default',
       compact = false,
-      displayedScopes = ['read', 'write'],
+      displayedScopes = ['weather.read', 'weather.write'],
       className = '',
       ...props
     },
@@ -83,7 +83,10 @@ export const UserInfoBanner = forwardRef<HTMLDivElement, UserInfoBannerProps>(
                 title={isActive ? `Has ${scope} permission` : `Does not have ${scope} permission`}
               >
                 <span className="ds-scope-badge-icon">{isActive ? '✓' : '✗'}</span>
-                {scope.charAt(0).toUpperCase() + scope.slice(1)}
+                {scope
+                  .split('.')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ')}
               </div>
             );
           })}

@@ -2,10 +2,14 @@
 
 using AuthServer.Contracts;
 using AuthServer.Extensions;
+using AuthServer.Middleware;
 using AuthServer.Models;
-using AuthServer.Services;
+using AuthServer.Services.Authentication;
+using AuthServer.Services.Client;
+using AuthServer.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
@@ -42,7 +46,33 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container
-builder.Services.AddControllers();
+builder
+    .Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // Configure JSON serialization to handle both snake_case and PascalCase
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; // Use property names as-is
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; // Case-insensitive property matching
+    })
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        // Configure form binding to handle snake_case parameter names
+        options.SuppressModelStateInvalidFilter = true;
+    })
+    .AddMvcOptions(options =>
+    {
+        // Configure form options to handle form data
+        options.EnableEndpointRouting = true;
+    });
+
+// Configure form options
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.ValueLengthLimit = int.MaxValue;
+    options.MultipartBodyLengthLimit = int.MaxValue;
+    options.MultipartHeadersLengthLimit = int.MaxValue;
+});
+
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
@@ -70,10 +100,13 @@ builder
     });
 
 builder
-    .Services.AddScoped<IAuthenticationService, AuthenticationService>()
+    .Services.AddSingleton<IUserRepository, InMemoryUserRepository>()
+    .AddScoped<IAuthenticationService, AuthenticationService>()
     .AddSingleton<IKeyManagementService, KeyManagementService>()
     .AddSingleton<IRedirectUriValidator, RedirectUriValidator>()
     .AddSingleton<IRefreshTokenService, RefreshTokenService>()
+    .AddSingleton<IAuthCodeRepository, InMemoryAuthCodeRepository>()
+    .AddSingleton<IOAuthClientRepository, InMemoryOAuthClientRepository>()
     .RegisterConfiguration<TokenConfiguration>("Token", ServiceLifetime.Singleton)
     .AddDistributedMemoryCache()
     .AddSession(options =>
@@ -103,6 +136,7 @@ app.UseSwaggerUI();
 if (!app.Environment.IsDevelopment())
 {
     app.UseHsts();
+    app.UseHttpsRedirection();
     app.Use(
         async (context, next) =>
         {
@@ -126,11 +160,11 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowSpaOrigin");
-app.UseHttpsRedirection();
 app.UseSession();
 app.ConfigureJwtValidation();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 app.MapRazorPages();
 

@@ -20,8 +20,8 @@ export default function ForecastsPage() {
   const [error, setError] = useState<string | null>(null);
 
   // Check scopes
-  const hasReadScope = user?.scopes.includes('read');
-  const hasWriteScope = user?.scopes.includes('write');
+  const hasReadScope = user?.scopes.includes('weather.read');
+  const hasWriteScope = user?.scopes.includes('weather.write');
 
   useEffect(() => {
     async function fetchForecasts() {

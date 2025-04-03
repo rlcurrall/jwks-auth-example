@@ -4,7 +4,7 @@ using AuthServer.Models;
 using Microsoft.IdentityModel.Tokens;
 using JWK = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
-namespace AuthServer.Services;
+namespace AuthServer.Services.Token;
 
 /// <summary>
 /// Service for managing cryptographic keys.

@@ -1,7 +1,7 @@
 using AuthServer.Contracts;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace AuthServer.Services;
+namespace AuthServer.Services.Token;
 
 /// <summary>
 /// Health check that verifies the KeyManagementService is properly initialized

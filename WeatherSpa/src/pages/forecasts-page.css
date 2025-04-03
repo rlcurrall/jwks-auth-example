@@ -38,7 +38,7 @@
 }
 
 .forecast-row:hover {
-  background-color: var(--surface-hover);
+  background-color: rgba(var(--primary-rgb), 0.05);
 }
 
 .date-cell {

@@ -55,7 +55,7 @@ function Layout({ children }: LayoutProps) {
       {isAuthenticated && user && (
         <UserInfoBanner
           user={user}
-          displayedScopes={['read', 'write']}
+          displayedScopes={['weather.read', 'weather.write']}
           aria-label="User information and permissions"
         />
       )}

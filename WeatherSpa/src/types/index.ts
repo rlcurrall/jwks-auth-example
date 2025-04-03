@@ -6,22 +6,23 @@ export interface WeatherForecast {
 }
 
 export interface AuthToken {
-  token: string;
-  expiration: string;
-  refreshToken: string;
-  refreshTokenExpiration: string;
+  access_token: string;
+  expires_in: string;
+  refresh_token: string;
+  refresh_token_expires_in: string;
+  scope?: string;
 }
 
 export interface Claims {
-  aud: string;
-  exp: number;
-  iss: string;
-  jti: string;
   sub: string;
-  name: string;
-  tenant: string;
-  roles: string[];
-  scope: string[];
+  name?: string;
+  tenant?: string;
+  roles?: string[];
+  scope?: string[];
+  exp: number;
+  iat: number;
+  iss: string;
+  aud: string;
 }
 
 export interface User {
